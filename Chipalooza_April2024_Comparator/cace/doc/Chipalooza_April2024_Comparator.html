@@ -1,0 +1,341 @@
+<HTML>
+<BODY>
+<H1> CACE 4.0 datasheet </H1>
+
+
+<HR>
+
+<FONT size=+1><B>Chipalooza_April2024_Comparator</B></FONT>
+
+
+<HR>
+
+<I> Precision rail-to-rail comparator with hysteresis and offset correction </I><BR><BR>
+<TABLE border="1" frame="box" rules="none" width="40%" cellspacing="0"
+	cellpadding="2" bgcolor="#ffffdd">
+<TBODY>
+<TR>
+<TD> PDK:
+<TD> sky130A
+</TR>
+</TBODY>
+</TABLE>
+<BR>
+
+<TABLE border="1" frame="box" rules="none" width="40%" cellspacing="0"
+	cellpadding="2" bgcolor="#ffffdd">
+<TBODY>
+<TR>
+<TD> Designer:
+<TD> Cameron Moyers and Parker Muery
+</TR>
+<TR>
+<TD> Company:
+<TD> N/A
+</TR>
+<TR>
+<TD> Created:
+<TD> March 18, 2024
+</TR>
+<TR>
+<TD> License:
+<TD> Apache 2.0
+</TR>
+</TBODY>
+</TABLE>
+<H2> Project dependencies </H2>
+
+<UL>
+</UL>
+
+<H2> Pin names and descriptions </H2>
+<TABLE border="1" frame="box" rules="all" width="80%" cellspacing="0"
+	cellpadding="2" bgcolor="#eeeeff">
+<TBODY>
+<TR>
+<TD> <I>pin name</I><TD> <I>description</I><TD> <I>type</I><TD> <I>direction</I><TD> <I>Vmin</I><TD> <I>Vmax</I><TD> <I>notes</I></TR>
+<TR>
+<TD>
+</TR>
+<TR>
+<TD> <B>ena</B>
+<TD> Enable input (active high)
+<TD> digital
+<TD> input
+<TD> vss - 0.3
+<TD> vdd + 0.3
+<TD> May be 1.8V or 3.3V signal
+</TR>
+<TR>
+<TD> <B>vhyst_0</B>
+<TD> hysteresis bit 0 (active high)
+<TD> digital
+<TD> input
+<TD> 1.5
+<TD> 2.1
+<TD> 
+</TR>
+<TR>
+<TD> <B>vhyst_1</B>
+<TD> hysteresis bit 1 (active high)
+<TD> digital
+<TD> input
+<TD> 1.5
+<TD> 2.1
+<TD> 
+</TR>
+<TR>
+<TD> <B>ibias</B>
+<TD> current bias
+<TD> signal
+<TD> input
+<TD> 0.9
+<TD> 1.1
+<TD> 
+</TR>
+<TR>
+<TD> <B>vinn</B>
+<TD> amplifier voltage negative input
+<TD> signal
+<TD> input
+<TD> vss - 0.3
+<TD> vdd + 0.3
+<TD> 
+</TR>
+<TR>
+<TD> <B>vinp</B>
+<TD> amplifier voltage positive input
+<TD> signal
+<TD> input
+<TD> vss - 0.3
+<TD> vdd + 0.3
+<TD> 
+</TR>
+<TR>
+<TD> <B>vout</B>
+<TD> amplifier voltage output
+<TD> signal
+<TD> output
+<TD> vss
+<TD> vdd
+<TD> 
+</TR>
+<TR>
+<TD> <B>avdd</B>
+<TD> Analog power supply
+<TD> power
+<TD> inout
+<TD> 3.0
+<TD> 3.6
+<TD> 
+</TR>
+<TR>
+<TD> <B>avss</B>
+<TD> Analog ground
+<TD> ground
+<TD> inout
+<TD> -0.3
+<TD> 0.3
+<TD> 
+</TR>
+<TR>
+<TD> <B>dvdd</B>
+<TD> Digital power supply
+<TD> power
+<TD> inout
+<TD> 1.5
+<TD> 2.1
+<TD> 
+</TR>
+<TR>
+<TD> <B>dvss</B>
+<TD> Digital ground
+<TD> ground
+<TD> inout
+<TD> -0.3
+<TD> 0.3
+<TD> 
+</TR>
+</TBODY>
+</TABLE>
+<H2> Default conditions </H2>
+<TABLE border="1" frame="box" rules="all" width="80%" cellspacing="0"
+	cellpadding="2" bgcolor="#ddeeff">
+<TBODY>
+<TR>
+<TD> <I>name</I><TD> <I>description</I><TD> <I>unit</I><TD> <I>minimum</I><TD> <I>typical</I><TD> <I>maximum</I><TD> <I>notes</I></TR>
+<TR>
+<TD>
+</TR>
+<TR>
+<TD> <B>avdd</B>
+<TD> Analog power supply voltage
+<TD> V
+<TD> 
+<TD> 3.3
+<TD> 
+<TD> 
+</TR>
+<TR>
+<TD> <B>avss</B>
+<TD> Analog ground
+<TD> V
+<TD> 
+<TD> 0
+<TD> 
+<TD> 
+</TR>
+<TR>
+<TD> <B>dvdd</B>
+<TD> Digital power supply voltage
+<TD> V
+<TD> 
+<TD> 1.8
+<TD> 
+<TD> 
+</TR>
+<TR>
+<TD> <B>dvss</B>
+<TD> Digital ground
+<TD> V
+<TD> 
+<TD> 0
+<TD> 
+<TD> 
+</TR>
+<TR>
+<TD> <B>RLoad</B>
+<TD> Output load resistance
+<TD> MΩ
+<TD> 
+<TD> 100
+<TD> 
+<TD> 
+</TR>
+<TR>
+<TD> <B>CLoad</B>
+<TD> Output load capacitance
+<TD> fF
+<TD> 
+<TD> 
+<TD> 100
+<TD> 
+</TR>
+<TR>
+<TD> <B>ena</B>
+<TD> Amplifier enable
+<TD> 
+<TD> 
+<TD> 1
+<TD> 
+<TD> 
+</TR>
+<TR>
+<TD> <B>vhyst_0</B>
+<TD> hysteresis bit 0
+<TD> 
+<TD> 
+<TD> 1
+<TD> 
+<TD> 
+</TR>
+<TR>
+<TD> <B>vhyst_1</B>
+<TD> hysteresis bit 1
+<TD> 
+<TD> 
+<TD> 1
+<TD> 
+<TD> 
+</TR>
+<TR>
+<TD> <B>Temp</B>
+<TD> Ambient temperature
+<TD> °C
+<TD> -40
+<TD> 27
+<TD> 85
+<TD> 
+</TR>
+<TR>
+<TD> <B>Corner</B>
+<TD> Process corner
+<TD> 
+<TD> ss
+<TD> tt
+<TD> ff
+<TD> 
+</TR>
+<TR>
+<TD> <B>Iterations</B>
+<TD> Iterations to run
+<TD> 
+<TD> 1
+<TD> 
+<TD> 10
+<TD> 
+</TR>
+</TBODY>
+</TABLE>
+<H2> Electrical parameters </H2>
+<TABLE border="1" frame="box" rules="all" width="80%" cellspacing="0"
+	cellpadding="2" bgcolor="#ddffff">
+<TBODY>
+<TR>
+<TD> <I>name</I><TD> <I>description</I><TD> <I>unit</I><TD> <I>minimum</I><TD> <I>typical</I><TD> <I>maximum</I><TD> <I>notes</I></TR>
+<TR>
+<TD>
+</TR>
+<TR>
+<TD> <B>Idd</B>
+<TD> Current draw through analog supply, amplifier enabled, no load
+<TD> µA
+<TD>  
+<TD> 170
+<TD> 250
+<TD> 
+</TR>
+</TBODY>
+</TABLE>
+<BR><I>Note:</I> Values taken from Specification<BR>
+<H2> Physical parameters </H2>
+<TABLE border="1" frame="box" rules="all" width="80%" cellspacing="0"
+	cellpadding="2" bgcolor="#eeffff">
+<TBODY>
+<TR>
+<TD> <I>name</I><TD> <I>description</I><TD> <I>unit</I><TD> <I>minimum</I><TD> <I>typical</I><TD> <I>maximum</I><TD> <I>notes</I></TR>
+<TR>
+<TD>
+</TR>
+<TR>
+<TD> <B>area</B>
+<TD> Total circuit layout area
+<TD> µm²
+<TD> 
+<TD> 
+<TD> 50000
+<TD> 
+</TR>
+<TR>
+<TD> <B>LVS errors</B>
+<TD> LVS errors
+<TD> 
+<TD> 
+<TD> 
+<TD> 0
+<TD> 
+</TR>
+<TR>
+<TD> <B>DRC errors</B>
+<TD> DRC errors
+<TD> 
+<TD> 
+<TD> 
+<TD> 0
+<TD> 
+</TR>
+</TBODY>
+</TABLE>
+<BR><I>Note:</I> Values taken from Specification<BR>
+</BODY>
+</HTML>

@@ -1,0 +1,487 @@
+#--------------------------------------------------------------
+# CACE circuit characterization file
+#--------------------------------------------------------------
+
+name:		Chipalooza_April2024_Comparator
+description:	Precision rail-to-rail comparator with hysteresis and offset correction
+commit:		N/A
+PDK:		sky130A
+
+cace_format:	4.0
+
+authorship {
+	designer:	Cameron Moyers and Parker Muery
+	company:	N/A
+	creation_date:	March 18, 2024
+	license:	Apache 2.0
+}
+
+# Paths to various files
+
+paths {
+	root:		..
+	documentation:	doc
+	schematic:	xschem
+	magic:		magic
+	layout:		gds
+	netlist:	netlist
+	testbench:	cace
+	simulation:	ngspice
+        reports:	reports
+	plots:		plots
+	logs:		ngspice/log
+}
+
+# Project dependencies
+
+dependencies {
+}
+
+# Pin names and descriptions
+
+pins {
+	name:		ena
+	description:	Enable input (active high)
+	type:		digital
+	direction:	input
+	Vmin:		vss - 0.3
+	Vmax:		vdd + 0.3
+	note:		May be 1.8V or 3.3V signal
+	
+	+
+	name:		vhyst_0
+	description:	hysteresis bit 0 (active high)
+	type:		digital
+	direction:	input
+	Vmin:		0
+	Vmax:		1.8
+	
+	+
+	name:		vhyst_1
+	description:	hysteresis bit 1 (active high)
+	type:		digital
+	direction:	input
+	Vmin:		0
+	Vmax:		1.8
+	
+	+
+	name:		ibias
+	description:	current bias
+	type:		signal
+	direction:	input
+	Vmin:		0.9
+	Vmax:		1.1
+
+ 	+
+	name:		vinn
+	description:	amplifier voltage negative input
+	type:		signal
+	direction:	input
+	Vmin:		vss - 0.3
+	Vmax:		vdd + 0.3
+
+ 	+
+	name:		vinp
+	description:	amplifier voltage positive input
+	type:		signal
+	direction:	input
+	Vmin:		vss - 0.3
+	Vmax:		vdd + 0.3
+
+ 	+
+	name:		vout
+	description:	amplifier voltage output
+	type:		signal
+	direction:	output
+	Vmin:		vss
+	Vmax:		vdd
+
+ 	+
+	name:		avdd
+	description:	Analog power supply
+	type:		power
+	direction:	inout
+	Vmin:		3.0
+	Vmax:		3.6
+
+ 	+
+	name:		avss
+	description:	Analog ground
+	type:		ground
+	direction:	inout
+	Vmin:		-0.3
+	Vmax:		0.3
+	
+	+
+	name:		dvdd
+	description:	Digital power supply
+	type:		power
+	direction:	inout
+	Vmin:		1.5
+	Vmax:		2.1
+
+ 	+
+	name:		dvss
+	description:	Digital ground
+	type:		ground
+	direction:	inout
+	Vmin:		-0.3
+	Vmax:		0.3
+}
+
+# Default values for electrical parameter measurement conditions
+# if not otherwise specified
+
+default_conditions {
+	name:		Vavdd
+	description:	Analog power supply voltage
+	display:	avdd
+	unit:		V
+	typical:	3.3
+
+	+
+	name:		Vavss
+	description:	Analog ground
+	display:	avss
+	unit:		V
+	typical:	0
+
+	+
+	name:		Vdvdd
+	description:	Digital power supply voltage
+	display:	dvdd
+	unit:		V
+	typical:	1.8
+	
+	+
+	name:		Vdvss
+	description:	Digital ground
+	display:	dvss
+	unit:		V
+	typical:	0
+
+	+
+	name:		ibias
+	description:	current bias
+	display:	ibias
+	unit:		{micro}A
+	typical:	1
+
+	+
+	name:		Rout
+	description:	Output load resistance
+	display:	RLoad
+	unit:		M{ohms}
+	typical:	100
+
+	+
+	name:		Cout
+	description:	Output load capacitance
+	display:	CLoad
+	unit:		fF
+	maximum:	100
+
+	+
+	name:		ena
+	description:	Amplifier enable
+	display:	ena
+	unit:		V
+	typical:	1.8
+
+#	+
+#	name:		Vcm
+#	description:	Common-mode input voltage
+#	display:	Vcm
+#	typical:	1.65
+
+#	+
+#	name:		Vdiff
+#	description:	Differential input voltage
+#	display:	Vdiff
+#	typical:	0
+
+	+
+	name:		hyst0
+	description:	hysteresis bit 0
+	display:	hyst0
+	unit:		V
+	typical:	1.8
+	
+	+
+	name:		hyst_1
+	description:	hysteresis bit 1
+	display:	hyst
+	unit:		V
+	typical:	1.8
+	
+	+
+	name:		Vdiff
+	description:	Differential input voltage
+	display:	Vdiff
+	typical:	0
+
+	+
+	name:		temperature
+	description:	Ambient temperature
+	display:	Temp
+	unit:		{degrees}C
+	minimum:	-40
+	typical:	27
+	maximum:	85
+
+	+
+	name:		corner
+	description:	Process corner
+	display:	Corner
+	minimum:	ss
+	typical:	tt
+	maximum:	ff
+
+	+
+	name:		iterations
+	description:	Iterations to run
+	display:	Iterations
+	minimum:	1
+	maximum:	10
+	step:		linear
+	stepsize:	1
+}
+
+# List of electrical parameters to be measured and their specified limits
+
+electrical_parameters {
+	name:		powerConsumption_enabled
+	description:	Current draw through analog supply, amplifier enabled, no load
+	display:	Power Consumption (enabled)
+	unit: 		{micro}A
+	spec {
+		minimum:	any
+		typical:	15
+		maximum:	20	fail
+	}
+	simulate {
+		tool:		ngspice
+		template:	powerConsumption.spice
+		format:		ascii .data null result
+	}
+	conditions {
+		name: Vavdd
+		typical: 3.3
+
+		+
+		name: Vvcm
+		maximum: 3.3
+		typical: 1.65
+		minimum: 0.0
+
+		+
+		name: temperature
+		typical: 27
+
+		+
+		name: corner
+		typical: tt
+	}
+	
+	+
+	name:		powerConsumption_disabled
+	description:	Current draw through analog supply, amplifier enabled, no load
+	display:	Power Consumption (disabled)
+	unit: 		{micro}A
+	spec {
+		minimum:	any
+		typical:	15
+		maximum:	20	fail
+	}
+	simulate {
+		tool:		ngspice
+		template:	powerConsumption.spice
+		format:		ascii .data null result
+	}
+	conditions {
+		name: Vavdd
+		typical: 3.3
+
+		+
+		name: Vvcm
+		maximum: 3.3
+		typical: 1.65
+		minimum: 0.0
+		
+		+
+		name: ena
+		typical: 0
+
+		+
+		name: temperature
+		typical: 27
+
+		+
+		name: corner
+		typical: tt
+	}
+	
+	+
+	name:		offset_error
+	status:		skip
+	description:	Input Offset Voltage
+	display:	Input Offset Voltage
+	unit:		mV
+	spec {
+		minimum:	any
+		typical:	0.5
+		maximum:	1	fail
+	}
+	simulate {
+		tool:		ngspice
+		template:	input_offset.spice
+		format:		ascii .data result null
+	}
+	conditions {
+		name: Vvdd
+		typical: 3.3
+
+		+
+		name: temperature
+		maximum: 110
+		typical: 27
+		minimum: -40
+
+		+
+		name: risetime
+		display: Trise
+		unit: ms
+		typical: 50
+		note: Ramp rate of Vdiff for input offset measurement
+
+		+
+		name: Vcm
+		minimum: 0.33
+		maximum: 2.97
+		note: offset measured at 10% and 90% values
+
+		+
+		name: corner
+		minimum: ss
+		typical: tt
+		maximum: ff
+	}
+	
+	+
+	name:		frequency_bandwidth
+	status:		skip
+	description:	Frequency Bandwidth (3db)
+	display:	Frequency Bandwidth
+	unit:		Hz
+	spec {
+		minimum:	5e3
+		typical:	10e3
+		maximum:	20e3	fail
+	}
+	simulate {
+		tool:		ngspice
+		template:	frequencyBandwidth.spice
+		format:		ascii .data result
+	}
+	conditions {
+		name: Vvdd
+		typical: 3.3
+
+		+
+		name: temperature
+		typical: 27
+
+		+
+		name: Vcm
+		typical: 0.0
+
+		+
+		name: corner
+		typical: tt
+	}
+	
+	+
+	name:		cmrr_100k
+	description:	CMRR @ 100kHz
+	display:	CMRR @ 100kHz
+	unit:		dB
+	spec {
+		maximum:	-40	fail
+		typical:	any
+		minimum:	any
+	}
+	simulate {
+		tool:		ngspice
+		template:	cmrr.spice
+		format:		ascii .data result
+	}
+	conditions {
+		name: Vvdd
+		typical: 3.3
+
+		+
+		name: temperature
+		maximum: 110
+		typical: 27
+		minimum: -40
+
+		+
+		name: Vcm
+		maximum: 2.97
+		minimum: 0.33
+		note: measured at 10% and 90% values
+
+		+
+		name: risetime
+		display: Trise
+		unit: ms
+		typical: 50
+		note: Ramp rate of Vdiff for CMRR measurement
+
+		+
+		name: corner
+		minimum: ss
+		typical: tt
+		maximum: ff
+	}
+
+}
+
+# List of physical parameters to be measured and their specified limits
+
+physical_parameters {
+	name:		area
+	status:		skip
+	description:	Total circuit layout area
+	display:	area
+	unit: 		{micro}m{squared}
+	spec {
+		maximum:	50000	fail
+	}
+	evaluate {
+		tool:		cace_area
+	}
+
+	+
+	name:		LVS_errors
+	description:	LVS errors
+	display:	LVS errors
+	spec {
+		maximum:	0	fail
+	}
+	evaluate {
+		tool:		cace_lvs run_project_lvs.tcl
+	}
+
+	+
+	name:		DRC_errors
+	status:		skip
+	description:	DRC errors
+	display:	DRC errors
+	spec {
+		maximum:	0	fail
+	}
+	evaluate {
+		tool:		cace_drc
+	}
+}
