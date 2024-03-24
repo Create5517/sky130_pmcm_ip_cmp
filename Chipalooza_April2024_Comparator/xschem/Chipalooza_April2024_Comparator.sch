@@ -266,11 +266,11 @@ lab=nbias_tail}
 N 805 -575 1175 -575 {
 lab=vinp}
 N 995 -335 995 -275 {
-lab=#net5}
+lab=avss}
 N 995 -275 1125 -275 {
-lab=#net5}
+lab=avss}
 N 1125 -335 1125 -275 {
-lab=#net5}
+lab=avss}
 N 1465 -575 1555 -575 {
 lab=vinn}
 N 1355 -505 1355 -385 {
@@ -316,7 +316,7 @@ lab=avdd}
 N 1315 -1025 1315 -1015 {
 lab=psource_input}
 N 1125 -275 1195 -275 {
-lab=#net5}
+lab=avss}
 N 805 -895 805 -575 {
 lab=vinp}
 N 745 -745 775 -745 {
@@ -344,21 +344,21 @@ lab=I_hyst}
 N 2280 -1725 2320 -1725 {
 lab=SumOut}
 N 2345 -1640 2360 -1640 {
-lab=#net6}
+lab=#net5}
 N 2345 -1640 2345 -1560 {
-lab=#net6}
+lab=#net5}
 N 2360 -1640 2430 -1640 {
-lab=#net6}
+lab=#net5}
 N 2430 -1665 2430 -1640 {
-lab=#net6}
+lab=#net5}
 N 2360 -1665 2430 -1665 {
-lab=#net6}
+lab=#net5}
 N 2360 -1695 2360 -1665 {
-lab=#net6}
+lab=#net5}
 N 2430 -1665 2485 -1665 {
-lab=#net6}
+lab=#net5}
 N 2485 -1695 2485 -1665 {
-lab=#net6}
+lab=#net5}
 N 2485 -1870 2485 -1755 {
 lab=avss}
 N 2360 -1805 2360 -1755 {
@@ -427,12 +427,10 @@ N 2850 -600 2880 -600 {
 lab=SumOut}
 N 2850 -720 2880 -720 {
 lab=SumOut}
-N 1195 -275 1355 -275 {
-lab=#net5}
 N 1355 -275 1355 -240 {
-lab=#net5}
+lab=#net6}
 N 1355 -240 1355 -235 {
-lab=#net5}
+lab=#net6}
 N 1310 -1570 1310 -1560 {
 lab=I_hyst}
 N 1310 -1560 1310 -1500 {
@@ -544,8 +542,8 @@ C {devices/lab_pin.sym} 1195 -1815 0 1 {name=p23 sig_type=std_logic lab=dvss
 C {devices/lab_pin.sym} 1440 -1685 0 1 {name=p30 sig_type=std_logic lab=dvss
 
 }
-C {devices/vsource.sym} 2885 -1355 0 0 {name=V4 value=2.5 savecurrent=false}
-C {devices/vsource.sym} 3015 -1355 0 0 {name=V5 value=3 savecurrent=false}
+C {devices/vsource.sym} 2885 -1355 0 0 {name=V4 value=2.25 savecurrent=false}
+C {devices/vsource.sym} 3015 -1355 0 0 {name=V5 value=1.5 savecurrent=false}
 C {devices/lab_pin.sym} 3015 -1385 0 0 {name=p36 sig_type=std_logic lab=Nbias
 
 
@@ -758,7 +756,7 @@ C {devices/lab_pin.sym} 2135 -520 0 0 {name=l3 lab=P1
 C {devices/lab_pin.sym} 2175 -930 0 0 {name=l4 lab=N1}
 C {devices/lab_pin.sym} 2565 -770 0 1 {name=l5 lab=Bias1
 }
-C {devices/isource.sym} 2015 -905 0 0 {name=I1 value=1u}
+C {devices/isource.sym} 2015 -905 0 0 {name=I1 value=4u}
 C {devices/lab_pin.sym} 1985 -840 0 0 {name=p1 lab=avss
 }
 C {devices/lab_pin.sym} 2015 -1010 0 0 {name=l24 lab=avdd
@@ -909,9 +907,9 @@ C {devices/lab_pin.sym} 1425 -665 0 1 {name=l10 lab=N2}
 C {devices/lab_pin.sym} 1215 -665 0 0 {name=l11 lab=N1}
 C {sky130_fd_pr/nfet_g5v0d10v5.sym} 1105 -365 0 0 {name=M21
 L=1
-W=4
+W=3
 nf=1
-mult=2
+mult=4
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -1178,7 +1176,7 @@ model=nfet_01v8
 spiceprefix=X}
 C {devices/lab_pin.sym} 2485 -710 2 0 {name=l30 lab=SumOut
 }
-C {devices/vsource.sym} 3015 -1260 0 0 {name=V2 value=2.5 savecurrent=false}
+C {devices/vsource.sym} 3015 -1260 0 0 {name=V2 value=1.5 savecurrent=false}
 C {devices/lab_pin.sym} 3015 -1290 0 0 {name=p15 sig_type=std_logic lab=Bias1
 
 
@@ -1200,7 +1198,7 @@ C {devices/lab_pin.sym} 2215 -730 2 0 {name=l36 lab=Sum
 }
 C {devices/lab_pin.sym} 2590 -1725 2 0 {name=l32 lab=SumOutBar
 }
-C {devices/vsource.sym} 2875 -1260 0 0 {name=V1 value=2.5 savecurrent=false}
+C {devices/vsource.sym} 2875 -1260 0 0 {name=V1 value=2.0 savecurrent=false}
 C {devices/lab_pin.sym} 2875 -1290 0 0 {name=p14 sig_type=std_logic lab=Bias2
 
 
@@ -1326,9 +1324,13 @@ C {devices/lab_pin.sym} 2485 -1870 0 1 {name=p52 lab=avss
 }
 C {devices/lab_pin.sym} 2360 -1870 0 1 {name=p64 lab=avss
 }
-C {devices/isource.sym} 1315 -1105 0 0 {name=I2 value=1u}
-C {devices/isource.sym} 1355 -355 0 0 {name=I3 value=1u}
+C {devices/isource.sym} 1315 -1105 0 0 {name=I2 value=2u}
+C {devices/isource.sym} 1355 -355 0 0 {name=I3 value=2u}
 C {devices/lab_pin.sym} 1355 -325 0 1 {name=p13 sig_type=std_logic lab=avss
+
+
+}
+C {devices/lab_pin.sym} 1195 -275 0 1 {name=p67 sig_type=std_logic lab=avss
 
 
 }
