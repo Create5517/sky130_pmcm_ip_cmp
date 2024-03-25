@@ -137,8 +137,8 @@ value=\{Cout\}}
 C {devices/lab_pin.sym} 1260 -380 0 1 {name=p27 sig_type=std_logic lab=VSUB}
 C {devices/vsource.sym} 140 -180 0 0 {name=Vdvdd value="DC \{Vdvdd\}" savecurrent=false}
 C {devices/vsource.sym} 540 -230 0 0 {name=Vena value="DC 1.8" savecurrent=false}
-C {devices/vsource.sym} 620 -180 0 0 {name=Vhyst0 value="DC 1.8" savecurrent=false}
-C {devices/vsource.sym} 700 -210 0 0 {name=Vhyst1 value="DC 1.8" savecurrent=false}
+C {devices/vsource.sym} 620 -180 0 0 {name=Vhyst0 value="DC 0" savecurrent=false}
+C {devices/vsource.sym} 700 -210 0 0 {name=Vhyst1 value="DC 0" savecurrent=false}
 C {devices/vsource.sym} 780 -180 0 0 {name=Vavss value="DC \{Vavss\}" savecurrent=false}
 C {devices/vsource.sym} 870 -180 0 0 {name=Vdvss value="DC \{Vdvss\}" savecurrent=false}
 C {devices/lab_pin.sym} 90 -140 0 0 {name=p1 sig_type=std_logic lab=VSUB}
@@ -184,8 +184,8 @@ write TB_ICMR.raw
 C {devices/res.sym} 420 -70 0 0 {name=RSUB1
 value=0.01
 device=resistor}
-C {devices/vsource.sym} 400 -170 0 0 {name=VVcm1 value="DC 2.5" savecurrent=false}
-C {devices/vsource.sym} 400 -395 0 0 {name=Vvinp value="pulse(-0.1 0.1 10us 10us 10us 200us 500us)" savecurrent=false}
+C {devices/vsource.sym} 400 -170 0 0 {name=VVcm1 value="DC 0" savecurrent=false}
+C {devices/vsource.sym} 400 -395 0 0 {name=Vvinp value="pulse(-0.1 0.1 50us 0us 0us 200us 500us)" savecurrent=false}
 C {devices/lab_pin.sym} 400 -490 0 0 {name=p5 sig_type=std_logic lab=vinp
 }
 C {Chipalooza_April2024_Comparator.sym} 810 -440 0 0 {name=x1}

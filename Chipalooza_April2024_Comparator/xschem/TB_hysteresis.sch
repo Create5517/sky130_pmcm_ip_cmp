@@ -7,10 +7,6 @@ S {}
 E {}
 N 1545 -435 1685 -435 {
 lab=vout}
-N 1665 -375 1805 -375 {
-lab=VSUB}
-N 1805 -375 1845 -375 {
-lab=VSUB}
 N 1685 -435 1975 -435 {
 lab=vout}
 N 725 -615 1365 -615 {
@@ -34,15 +30,15 @@ lab=ibias}
 N 1125 -335 1305 -335 {
 lab=ena}
 N 1335 -325 1335 -295 {
-lab=vhsyt_0}
+lab=h0}
 N 1205 -295 1335 -295 {
-lab=vhsyt_0}
+lab=h0}
 N 1205 -295 1205 -205 {
-lab=vhsyt_0}
+lab=h0}
 N 1355 -325 1355 -245 {
-lab=vhsyt_1}
+lab=h1}
 N 1285 -245 1355 -245 {
-lab=vhsyt_1}
+lab=h1}
 N 1365 -215 1365 -205 {
 lab=avss}
 N 1365 -215 1385 -215 {
@@ -72,7 +68,7 @@ lab=ena}
 N 1125 -195 1125 -155 {
 lab=VSUB}
 N 1285 -245 1285 -235 {
-lab=vhsyt_1}
+lab=h1}
 N 1285 -175 1285 -145 {
 lab=VSUB}
 N 1125 -145 1125 -135 {
@@ -96,45 +92,48 @@ lab=VSUB}
 N 1215 -485 1245 -485 {
 lab=vinp}
 N 1215 -405 1245 -405 {
-lab=#net1}
+lab=vinx}
 N 1075 -485 1095 -485 {
 lab=vinp}
 N 1075 -405 1105 -405 {
-lab=#net1}
+lab=vinx}
 N 1155 -485 1215 -485 {
 lab=vinp}
 N 1095 -485 1155 -485 {
 lab=vinp}
 N 1105 -405 1125 -405 {
-lab=#net1}
+lab=vinx}
 N 1125 -405 1135 -405 {
-lab=#net1}
+lab=vinx}
 N 1195 -405 1215 -405 {
-lab=#net1}
+lab=vinx}
 N 1135 -405 1195 -405 {
-lab=#net1}
+lab=vinx}
 N 985 -485 1075 -485 {
 lab=vinp}
 N 985 -485 985 -445 {
 lab=vinp}
 N 1045 -405 1075 -405 {
-lab=#net1}
-N 985 -360 985 -195 {
-lab=#net1}
+lab=vinx}
 N 1045 -405 1045 -315 {
-lab=#net1}
+lab=vinx}
 N 985 -315 1045 -315 {
-lab=#net1}
+lab=vinx}
 N 985 -445 985 -420 {
 lab=vinp}
+N 985 -160 985 -135 {
+lab=VSUB}
+N 985 -360 985 -220 {
+lab=vinx}
+N 1665 -375 1805 -375 {
+lab=VSUB}
+N 1805 -375 1845 -375 {
+lab=VSUB}
 C {devices/lab_pin.sym} 1975 -435 2 0 {name=p8 sig_type=std_logic lab=vout
 
 
 }
 C {devices/vsource.sym} 795 -175 0 0 {name=Vavdd value="DC \{Vavdd\}" savecurrent=false}
-C {devices/capa.sym} 1805 -405 0 0 {name=Cout
-value=\{Cout\}}
-C {devices/lab_pin.sym} 1845 -375 0 1 {name=p27 sig_type=std_logic lab=VSUB}
 C {devices/vsource.sym} 725 -175 0 0 {name=Vdvdd value="DC \{Vdvdd\}" savecurrent=false}
 C {devices/vsource.sym} 1125 -225 0 0 {name=Vena value="DC 1.8" savecurrent=false}
 C {devices/vsource.sym} 1205 -175 0 0 {name=Vhyst0 value="pulse(0 1.8 158us 10us 10us 1000us 500us)" savecurrent=false}
@@ -148,48 +147,44 @@ C {devices/lab_pin.sym} 725 -455 0 0 {name=p2 sig_type=std_logic lab=dvdd}
 C {devices/lab_pin.sym} 795 -455 0 0 {name=p3 sig_type=std_logic lab=avdd}
 C {devices/lab_pin.sym} 915 -455 0 0 {name=p4 sig_type=std_logic lab=ibias}
 C {devices/lab_pin.sym} 1125 -315 0 0 {name=p7 sig_type=std_logic lab=ena}
-C {devices/lab_pin.sym} 1205 -275 0 0 {name=p9 sig_type=std_logic lab=vhsyt_0}
-C {devices/lab_pin.sym} 1285 -245 0 0 {name=p10 sig_type=std_logic lab=vhsyt_1}
 C {devices/lab_pin.sym} 1395 -225 0 0 {name=p11 sig_type=std_logic lab=avss}
 C {devices/lab_pin.sym} 1435 -255 0 1 {name=p12 sig_type=std_logic lab=dvss}
-C {sky130_fd_pr/corner.sym} 355 -930 0 0 {name=CORNER only_toplevel=true corner=tt}
-C {devices/code_shown.sym} 105 -575 0 0 {name=NGSPICE
+C {devices/code_shown.sym} 65 -625 0 0 {name=NGSPICE
 only_toplevel=true
 value="* this option enables mos model bin 
 * selection based on W/NF instead of W
 *.option wnflag=1 
 .option savecurrents
 .option save all
+.option temperature=25
 
 .control
 
-.param vdvdd=1.8 vavdd=3.3 cout=1f
-.param ibias=1u ena=1 Vhyst_0=1 Vhyst_1=1
-.param vavss=0 vdvss=0
-.param Vcm=0
+.param vavdd=3.3 cout=0 vdvdd=1.8 vavss=0
+.param vdvss=0 ibias=2u
 
 *dc VVcm 0 3.3 0.1
 *plot v(vout) v(inx)
 
-tran 0.01u 525u
+tran 0.05u 600u
 *plot v(vout) v(vinp)
 
-meas tran tr1 TRIG AT=0u TARG v(vout) VAL=1.79 RISE=1
+meas tran tr1 TRIG AT=0u TARG v(vout) VAL=1.75 RISE=1
 meas tran vin_tr1 find v(vinp) at=tr1
 
-meas tran tf1 TRIG AT=0u TARG v(vout) VAL=0.01 FALL=1
+meas tran tf1 TRIG AT=0u TARG v(vout) VAL=0.05 FALL=1
 meas tran vin_tf1 find v(vinp) at=tf1
 
-meas tran tr2 TRIG AT=0u TARG v(vout) VAL=1.79 RISE=2
+meas tran tr2 TRIG AT=0u TARG v(vout) VAL=1.75 RISE=2
 meas tran vin_tr2 find v(vinp) at=tr1
 
-meas tran tf2 TRIG AT=0u TARG v(vout) VAL=0.01 FALL=2
+meas tran tf2 TRIG AT=0u TARG v(vout) VAL=0.05 FALL=2
 meas tran vin_tf2 find v(vinp) at=tf2
 
-meas tran tr3 TRIG AT=0u TARG v(vout) VAL=1.79 RISE=3
+meas tran tr3 TRIG AT=0u TARG v(vout) VAL=1.75 RISE=3
 meas tran vin_tr3 find v(vinp) at=tr3
 
-meas tran tf3 TRIG AT=0u TARG v(vout) VAL=0.01 FALL=3
+meas tran tf3 TRIG AT=0u TARG v(vout) VAL=0.05 FALL=3
 meas tran vin_tf3 find v(vinp) at=tf3
 
 let hyst1=(vin_tf1-vin_tr1)
@@ -200,7 +195,14 @@ print hyst1
 print hyst2 
 print hyst3
 
+meas tran vinx_tr find v(vinx) at=tr1
+let vio=(vinx_tr-vin_tr1)
+
+print vio
+
 write TB_hysteresis.raw
+
+echo $&hyst1 $&hyst2 $&hyst3 $&vio > \{simpath\}/\{filename\}_\{N\}.data
 
 
 *quit 0
@@ -210,8 +212,16 @@ write TB_hysteresis.raw
 C {devices/res.sym} 1005 -65 0 0 {name=RSUB1
 value=0.01
 device=resistor}
-C {devices/vsource.sym} 985 -165 0 0 {name=VVcm1 value="DC=2.6" savecurrent=false}
+C {devices/vsource.sym} 985 -190 0 0 {name=VVcm1 value="DC=0.1" savecurrent=false}
 C {devices/vsource.sym} 985 -390 0 0 {name=Vvinp value="pulse(-0.2 0.2 0.1us 50us 50us 50us 175us)" savecurrent=false}
 C {devices/lab_pin.sym} 985 -485 0 0 {name=p5 sig_type=std_logic lab=vinp
 }
 C {Chipalooza_April2024_Comparator.sym} 1395 -435 0 0 {name=x1}
+C {devices/lab_pin.sym} 985 -300 0 0 {name=p6 sig_type=std_logic lab=vinx
+}
+C {devices/lab_pin.sym} 1205 -295 0 0 {name=p9 sig_type=std_logic lab=h0}
+C {devices/lab_pin.sym} 1355 -270 0 0 {name=p10 sig_type=std_logic lab=h1}
+C {devices/capa.sym} 1805 -405 0 0 {name=Cout
+value=\{Cout\}}
+C {devices/lab_pin.sym} 1845 -375 0 1 {name=p27 sig_type=std_logic lab=VSUB}
+C {sky130_fd_pr/corner.sym} 340 -870 0 0 {name=CORNER only_toplevel=true corner=tt}
