@@ -64,8 +64,6 @@ N 1245 -2345 1245 -2305 {
 lab=avssi}
 N 1145 -2375 1205 -2375 {
 lab=ibias}
-N 1105 -2530 1105 -2405 {
-lab=ibias}
 N 1165 -2445 1165 -2375 {
 lab=ibias}
 N 1105 -2445 1165 -2445 {
@@ -88,25 +86,25 @@ N 3105 -1105 3135 -1105 {
 lab=SumOut}
 N 1950 -2900 1950 -2830 {
 lab=N1}
-N 1600 -85 1600 -55 {lab=avss}
-N 1600 -150 1600 -145 {
+N 2055 -395 2055 -365 {lab=avss}
+N 2055 -460 2055 -455 {
 lab=avssi}
-N 1600 -190 1600 -150 {
+N 2055 -500 2055 -460 {
 lab=avssi}
-N 1530 -190 1600 -190 {
+N 1985 -500 2055 -500 {
 lab=avssi}
-N 1600 -115 1630 -115 {
+N 2055 -425 2085 -425 {
 lab=avss}
 N 2165 -2375 2165 -2325 {
 lab=avss}
 N 2090 -2315 2165 -2315 {
 lab=avss}
 N 2105 -2405 2125 -2405 {
-lab=hyst_bias0}
+lab=ibias}
 N 2105 -2505 2125 -2505 {
 lab=hyst1}
 N 1865 -2405 1895 -2405 {
-lab=hyst_bias0}
+lab=ibias}
 N 1870 -2510 1895 -2510 {
 lab=hyst0}
 N 1935 -2480 1935 -2435 {
@@ -127,15 +125,6 @@ N 1935 -2575 2165 -2575 {
 lab=#net1}
 N 2020 -2585 2020 -2575 {
 lab=#net1}
-N 1870 -95 1870 -65 {lab=avss}
-N 1870 -160 1870 -155 {
-lab=dvssi}
-N 1870 -200 1870 -160 {
-lab=dvssi}
-N 1800 -200 1870 -200 {
-lab=dvssi}
-N 1870 -125 1900 -125 {
-lab=avss}
 N 3225 -1045 3305 -1045 {
 lab=SumOutBar}
 N 3385 -1045 3475 -1045 {
@@ -792,6 +781,9 @@ N 1390 -2650 1395 -2650 {
 lab=avdd}
 N 3270 -1990 3435 -1990 {
 lab=ibias}
+N 1105 -2500 1105 -2405 {}
+N 1105 -2585 1105 -2555 {}
+N 1105 -2555 1105 -2500 {}
 C {devices/ipin.sym} 110 -710 0 0 {name=p48 lab=vinp
 }
 C {devices/ipin.sym} 110 -680 0 0 {name=p4 lab=vinn
@@ -851,7 +843,7 @@ C {devices/lab_pin.sym} 3225 -1105 0 1 {name=l44 lab=dvdd
 }
 C {sky130_fd_pr/nfet_g5v0d10v5.sym} 1915 -2405 0 0 {name=M25
 L=1
-W=3
+W=1
 nf=1
 mult=2
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -868,7 +860,7 @@ C {devices/lab_pin.sym} 1935 -2405 0 1 {name=p41 lab=avss
 C {devices/lab_pin.sym} 1105 -2305 0 0 {name=p34 sig_type=std_logic lab=avssi
 
 }
-C {devices/lab_pin.sym} 1105 -2530 0 0 {name=p53 sig_type=std_logic lab=ibias
+C {devices/lab_pin.sym} 1105 -2585 0 0 {name=p53 sig_type=std_logic lab=ibias
 
 
 }
@@ -895,21 +887,21 @@ C {devices/lab_pin.sym} 2180 -2750 2 0 {name=l32 lab=SumOutBar
 }
 C {devices/lab_pin.sym} 1950 -2900 0 0 {name=l15 lab=N1}
 C {devices/lab_pin.sym} 2075 -2895 0 0 {name=l31 lab=N2}
-C {devices/lab_pin.sym} 3195 -915 0 0 {name=l41 lab=dvssi
+C {devices/lab_pin.sym} 3195 -915 0 0 {name=l41 lab=avssi
 }
-C {devices/lab_pin.sym} 1560 -115 0 0 {name=l48 lab=ena}
-C {devices/lab_pin.sym} 1600 -75 0 0 {name=p12 lab=avss
+C {devices/lab_pin.sym} 2015 -425 0 0 {name=l48 lab=ena}
+C {devices/lab_pin.sym} 2055 -385 0 0 {name=p12 lab=avss
 }
-C {devices/parax_cap.sym} 1600 -45 0 0 {name=C1  value=2p}
-C {devices/lab_pin.sym} 1630 -115 0 1 {name=p13 sig_type=std_logic lab=avss
+C {devices/parax_cap.sym} 2055 -355 0 0 {name=C1  value=2p}
+C {devices/lab_pin.sym} 2085 -425 0 1 {name=p13 sig_type=std_logic lab=avss
 
 
 }
-C {sky130_fd_pr/nfet_g5v0d10v5.sym} 1580 -115 0 0 {name=M38
+C {sky130_fd_pr/nfet_g5v0d10v5.sym} 2035 -425 0 0 {name=M38
 L=1
-W=16
+W=32
 nf=1
-mult=2
+mult=8
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -921,7 +913,7 @@ spiceprefix=X
 }
 C {sky130_fd_pr/nfet_g5v0d10v5.sym} 2145 -2405 0 0 {name=M39
 L=1
-W=4
+W=3
 nf=1
 mult=2
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -941,41 +933,10 @@ C {devices/lab_pin.sym} 1870 -2510 0 0 {name=p46 sig_type=std_logic lab=hyst0
 C {devices/lab_pin.sym} 2105 -2505 0 0 {name=p51 sig_type=std_logic lab=hyst1
 
 }
-C {devices/lab_pin.sym} 1865 -2405 0 0 {name=p43 sig_type=std_logic lab=hyst_bias0
-
-
-}
-C {devices/lab_pin.sym} 2105 -2405 0 0 {name=p45 sig_type=std_logic lab=hyst_bias0
-
-
-}
 C {devices/lab_pin.sym} 1935 -2510 0 1 {name=p29 lab=avss
 }
 C {devices/lab_pin.sym} 2165 -2505 0 1 {name=p52 lab=avss
 }
-C {devices/lab_pin.sym} 1830 -125 0 0 {name=l6 lab=ena}
-C {devices/lab_pin.sym} 1870 -85 0 0 {name=p18 lab=avss
-}
-C {devices/parax_cap.sym} 1870 -55 0 0 {name=C2  value=2p}
-C {devices/lab_pin.sym} 1900 -125 0 1 {name=p21 sig_type=std_logic lab=avss
-
-
-}
-C {sky130_fd_pr/nfet_g5v0d10v5.sym} 1850 -125 0 0 {name=M13
-L=1
-W=16
-nf=1
-mult=2
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=nfet_g5v0d10v5
-spiceprefix=X
-}
-C {devices/lab_pin.sym} 1800 -200 0 0 {name=l47 lab=dvssi}
 C {sky130_fd_pr/pfet_01v8.sym} 3365 -1105 0 0 {name=M16
 L=1
 W=2
@@ -1008,7 +969,7 @@ C {devices/lab_pin.sym} 3385 -985 0 1 {name=l42 lab=dvss
 }
 C {devices/lab_pin.sym} 3385 -1105 0 1 {name=l45 lab=dvdd
 }
-C {devices/lab_pin.sym} 2050 -2225 0 0 {name=p23 lab=avss
+C {devices/lab_pin.sym} 2050 -2225 0 0 {name=p23 lab=avssi
 }
 C {sky130_fd_pr/pfet_g5v0d10v5.sym} 2275 -1390 0 1 {name=M4
 L=1
@@ -1164,7 +1125,7 @@ C {devices/lab_pin.sym} 2655 -820 0 1 {name=p10 lab=avss
 }
 C {devices/lab_pin.sym} 2455 -820 0 0 {name=p11 lab=avss
 }
-C {devices/lab_pin.sym} 2455 -740 0 0 {name=p1 lab=avss
+C {devices/lab_pin.sym} 2455 -740 0 0 {name=p1 lab=avssi
 }
 C {sky130_fd_pr/pfet_g5v0d10v5.sym} 1685 -1275 0 1 {name=M2
 L=1
@@ -1366,7 +1327,7 @@ C {devices/lab_pin.sym} 3120 -2020 0 1 {name=p68 sig_type=std_logic lab=avssi
 }
 C {sky130_fd_pr/nfet_g5v0d10v5.sym} 3295 -2070 0 0 {name=M45
 L=1
-W=8
+W=3
 nf=1
 mult=2
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -1426,9 +1387,9 @@ C {devices/lab_pin.sym} 1505 -1485 2 1 {name=l58 lab=avdd
 }
 C {sky130_fd_pr/nfet_g5v0d10v5.sym} 3455 -2065 0 0 {name=M48
 L=1
-W=8
+W=6
 nf=1
-mult=4
+mult=2
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -1504,9 +1465,9 @@ C {devices/lab_pin.sym} 1060 -945 0 1 {name=p83 lab=Bias4
 }
 C {sky130_fd_pr/nfet_g5v0d10v5.sym} 3620 -2065 0 0 {name=M65
 L=1
-W=8
+W=1
 nf=1
-mult=4
+mult=2
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -1530,9 +1491,9 @@ C {devices/lab_pin.sym} 755 -995 2 1 {name=p81 lab=Bias4
 }
 C {sky130_fd_pr/nfet_g5v0d10v5.sym} 3785 -2065 0 0 {name=M76
 L=1
-W=8
+W=3
 nf=1
-mult=4
+mult=2
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -1549,9 +1510,9 @@ C {devices/lab_pin.sym} 3805 -2065 0 1 {name=p35 sig_type=std_logic lab=avss
 }
 C {sky130_fd_pr/nfet_g5v0d10v5.sym} 3950 -2065 0 0 {name=M77
 L=1
-W=8
+W=3
 nf=1
-mult=4
+mult=2
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -1572,9 +1533,9 @@ C {devices/lab_pin.sym} 3970 -2065 0 1 {name=p91 sig_type=std_logic lab=avss
 }
 C {sky130_fd_pr/nfet_g5v0d10v5.sym} 4115 -2065 0 0 {name=M78
 L=1
-W=8
+W=3
 nf=1
-mult=4
+mult=2
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -1595,9 +1556,9 @@ C {devices/lab_pin.sym} 4135 -2065 0 1 {name=p93 sig_type=std_logic lab=avss
 }
 C {sky130_fd_pr/nfet_g5v0d10v5.sym} 4280 -2065 0 0 {name=M79
 L=1
-W=8
+W=3
 nf=1
-mult=4
+mult=2
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -1618,9 +1579,9 @@ C {devices/lab_pin.sym} 4300 -2065 0 1 {name=p95 sig_type=std_logic lab=avss
 }
 C {sky130_fd_pr/nfet_g5v0d10v5.sym} 4445 -2065 0 0 {name=M81
 L=1
-W=8
+W=3
 nf=1
-mult=4
+mult=2
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -1641,9 +1602,9 @@ C {devices/lab_pin.sym} 4465 -2065 0 1 {name=p99 sig_type=std_logic lab=avss
 }
 C {sky130_fd_pr/nfet_g5v0d10v5.sym} 4610 -2065 0 0 {name=M82
 L=1
-W=8
+W=3
 nf=1
-mult=4
+mult=2
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -1664,9 +1625,9 @@ C {devices/lab_pin.sym} 4630 -2065 0 1 {name=p101 sig_type=std_logic lab=avss
 }
 C {sky130_fd_pr/nfet_g5v0d10v5.sym} 4775 -2065 0 0 {name=M83
 L=1
-W=8
+W=3
 nf=1
-mult=4
+mult=2
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -1683,13 +1644,13 @@ C {devices/lab_pin.sym} 4795 -2065 0 1 {name=p103 sig_type=std_logic lab=avss
 
 
 }
-C {devices/lab_pin.sym} 1530 -190 0 0 {name=l46 lab=avssi}
+C {devices/lab_pin.sym} 1985 -500 0 0 {name=l46 lab=avssi}
 C {devices/lab_pin.sym} 1435 -655 0 1 {name=l49 lab=avssi}
 C {devices/lab_pin.sym} 3125 -2200 0 0 {name=l50 lab=SourceBias0
 }
 C {devices/lab_pin.sym} 1595 -770 0 1 {name=l51 lab=SourceBias0
 }
-C {devices/lab_pin.sym} 4110 -2630 0 1 {name=p74 sig_type=std_logic lab=avss
+C {devices/lab_pin.sym} 4110 -2630 0 1 {name=p74 sig_type=std_logic lab=avssi
 
 
 }
@@ -1813,7 +1774,7 @@ sa=0 sb=0 sd=0
 model=pfet_g5v0d10v5
 spiceprefix=X
 }
-C {devices/lab_pin.sym} 3500 -2770 0 1 {name=p72 sig_type=std_logic lab=avss
+C {devices/lab_pin.sym} 3500 -2770 0 1 {name=p72 sig_type=std_logic lab=avssi
 
 
 }
@@ -1910,7 +1871,7 @@ sa=0 sb=0 sd=0
 model=pfet_g5v0d10v5
 spiceprefix=X
 }
-C {devices/lab_pin.sym} 4725 -2765 0 1 {name=p17 sig_type=std_logic lab=avss
+C {devices/lab_pin.sym} 4725 -2765 0 1 {name=p17 sig_type=std_logic lab=avssi
 
 
 }
@@ -1998,7 +1959,7 @@ sa=0 sb=0 sd=0
 model=pfet_g5v0d10v5
 spiceprefix=X
 }
-C {devices/lab_pin.sym} 3785 -2300 0 1 {name=p86 sig_type=std_logic lab=avss
+C {devices/lab_pin.sym} 3785 -2300 0 1 {name=p86 sig_type=std_logic lab=avssi
 
 
 }
@@ -2121,19 +2082,19 @@ spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 1915 -2510 0 0 {name=M31
 L=1
-W=3
+W=1
 mult=2 nf=1
 model=nfet_01v8
 spiceprefix=X}
 C {sky130_fd_pr/nfet_01v8.sym} 2145 -2505 0 0 {name=M32
 L=1
-W=4
+W=3
 mult=2 nf=1
 model=nfet_01v8
 spiceprefix=X}
 C {sky130_fd_pr/nfet_g5v0d10v5.sym} 1930 -2750 0 0 {name=M19
 L=1
-W=3
+W=2
 nf=1
 mult=2
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -2147,7 +2108,7 @@ spiceprefix=X
 }
 C {sky130_fd_pr/nfet_g5v0d10v5.sym} 2095 -2750 0 1 {name=M24
 L=1
-W=3
+W=2
 nf=1
 mult=2
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -2228,6 +2189,14 @@ model=pfet_g5v0d10v5
 spiceprefix=X
 }
 C {devices/lab_pin.sym} 2970 -2075 0 0 {name=p2 sig_type=std_logic lab=ibias
+
+
+}
+C {devices/lab_pin.sym} 1865 -2405 0 0 {name=p43 sig_type=std_logic lab=ibias
+
+
+}
+C {devices/lab_pin.sym} 2105 -2405 0 0 {name=p45 sig_type=std_logic lab=ibias
 
 
 }
