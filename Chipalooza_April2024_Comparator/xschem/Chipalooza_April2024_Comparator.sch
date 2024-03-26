@@ -768,13 +768,13 @@ lab=#net11}
 N 4690 -2935 4690 -2925 {
 lab=#net11}
 N 4625 -2865 4625 -2845 {
-lab=Bias4}
+lab=#net13}
 N 4560 -2895 4585 -2895 {
-lab=Bias4}
+lab=#net13}
 N 4560 -2895 4560 -2855 {
-lab=Bias4}
+lab=#net13}
 N 4560 -2855 4625 -2855 {
-lab=Bias4}
+lab=#net13}
 N 4490 -3115 4690 -3115 {
 lab=avdd}
 N 4765 -2105 4765 -2080 {
@@ -782,7 +782,7 @@ lab=avss}
 N 4725 -2135 4725 -2060 {
 lab=ibias}
 N 4765 -2195 4765 -2165 {
-lab=Bias4}
+lab=avss}
 N 4930 -2105 4930 -2080 {
 lab=avss}
 N 4890 -2135 4890 -2060 {
@@ -793,6 +793,14 @@ N 4930 -2195 4930 -2165 {
 lab=SourceBias10}
 N 4510 -2060 4730 -2060 {
 lab=ibias}
+N 600 -1275 600 -1240 {
+lab=Bias4}
+N 565 -1275 600 -1275 {
+lab=Bias4}
+N 430 -1255 430 -1220 {
+lab=Bias5}
+N 395 -1255 430 -1255 {
+lab=Bias5}
 C {devices/ipin.sym} 110 -710 0 0 {name=p48 lab=vinp
 }
 C {devices/ipin.sym} 110 -680 0 0 {name=p4 lab=vinn
@@ -2200,7 +2208,21 @@ spiceprefix=X
 }
 C {devices/lab_pin.sym} 2015 -855 0 1 {name=l6 lab=Bias5
 }
-C {devices/lab_pin.sym} 4560 -2880 0 0 {name=l35 lab=Bias4
+C {devices/lab_pin.sym} 4765 -2190 0 0 {name=p16 sig_type=std_logic lab=avss
+
+
 }
-C {devices/lab_pin.sym} 4765 -2195 0 0 {name=l38 lab=Bias4
+C {devices/vsource.sym} 600 -1210 0 0 {name=V1 value=0.5 savecurrent=false}
+C {devices/lab_pin.sym} 600 -1180 0 1 {name=p18 sig_type=std_logic lab=avss
+
+
+}
+C {devices/lab_pin.sym} 565 -1275 2 1 {name=p21 lab=Bias4
+}
+C {devices/vsource.sym} 430 -1190 0 0 {name=V2 value=0.5 savecurrent=false}
+C {devices/lab_pin.sym} 430 -1160 0 1 {name=p47 sig_type=std_logic lab=avss
+
+
+}
+C {devices/lab_pin.sym} 395 -1255 2 1 {name=p49 lab=Bias5
 }

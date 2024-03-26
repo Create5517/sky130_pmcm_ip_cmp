@@ -136,8 +136,8 @@ C {devices/lab_pin.sym} 1975 -435 2 0 {name=p8 sig_type=std_logic lab=vout
 C {devices/vsource.sym} 795 -175 0 0 {name=Vavdd value="DC \{Vavdd\}" savecurrent=false}
 C {devices/vsource.sym} 725 -175 0 0 {name=Vdvdd value="DC \{Vdvdd\}" savecurrent=false}
 C {devices/vsource.sym} 1125 -225 0 0 {name=Vena value="DC 1.8" savecurrent=false}
-C {devices/vsource.sym} 1205 -175 0 0 {name=Vhyst0 value="pulse(0 1.8 158us 10us 10us 1000us 500us)" savecurrent=false}
-C {devices/vsource.sym} 1285 -205 0 0 {name=Vhyst1 value="pulse(0 1.8 333us 10us 10us 1000us 500us)" savecurrent=false}
+C {devices/vsource.sym} 1205 -175 0 0 {name=Vhyst0 value="pulse(0 1.8 160us 10us 10us 1000us 500us)" savecurrent=false}
+C {devices/vsource.sym} 1285 -205 0 0 {name=Vhyst1 value="pulse(0 1.8 360us 10us 10us 1000us 500us)" savecurrent=false}
 C {devices/vsource.sym} 1365 -175 0 0 {name=Vavss value="DC \{Vavss\}" savecurrent=false}
 C {devices/vsource.sym} 1455 -175 0 0 {name=Vdvss value="DC \{Vdvss\}" savecurrent=false}
 C {devices/lab_pin.sym} 675 -135 0 0 {name=p1 sig_type=std_logic lab=VSUB}
@@ -161,12 +161,12 @@ value="* this option enables mos model bin
 .control
 
 .param vavdd=3.3 cout=0 vdvdd=1.8 vavss=0
-.param vdvss=0 ibias=2u
+.param vdvss=0 ibias=0.5u
 
 *dc VVcm 0 3.3 0.1
 *plot v(vout) v(inx)
 
-tran 0.05u 600u
+tran 0.25u 700u
 *plot v(vout) v(vinp)
 
 meas tran tr1 TRIG AT=0u TARG v(vout) VAL=1.75 RISE=1
@@ -212,8 +212,8 @@ echo $&hyst1 $&hyst2 $&hyst3 $&vio > \{simpath\}/\{filename\}_\{N\}.data
 C {devices/res.sym} 1005 -65 0 0 {name=RSUB1
 value=0.01
 device=resistor}
-C {devices/vsource.sym} 985 -190 0 0 {name=VVcm1 value="DC=0.1" savecurrent=false}
-C {devices/vsource.sym} 985 -390 0 0 {name=Vvinp value="pulse(-0.2 0.2 0.1us 50us 50us 50us 175us)" savecurrent=false}
+C {devices/vsource.sym} 985 -190 0 0 {name=VVcm1 value="DC=3" savecurrent=false}
+C {devices/vsource.sym} 985 -390 0 0 {name=Vvinp value="pulse(-0.2 0.2 0.1us 50us 50us 10us 225us)" savecurrent=false}
 C {devices/lab_pin.sym} 985 -485 0 0 {name=p5 sig_type=std_logic lab=vinp
 }
 C {Chipalooza_April2024_Comparator.sym} 1395 -435 0 0 {name=x1}
