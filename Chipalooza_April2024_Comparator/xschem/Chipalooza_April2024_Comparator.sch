@@ -2212,14 +2212,14 @@ C {devices/lab_pin.sym} 4765 -2190 0 0 {name=p16 sig_type=std_logic lab=avss
 
 
 }
-C {devices/vsource.sym} 600 -1210 0 0 {name=V1 value=0.5 savecurrent=false}
+C {devices/vsource.sym} 600 -1210 0 0 {name=V1 value=1.5 savecurrent=false}
 C {devices/lab_pin.sym} 600 -1180 0 1 {name=p18 sig_type=std_logic lab=avss
 
 
 }
 C {devices/lab_pin.sym} 565 -1275 2 1 {name=p21 lab=Bias4
 }
-C {devices/vsource.sym} 430 -1190 0 0 {name=V2 value=0.5 savecurrent=false}
+C {devices/vsource.sym} 430 -1190 0 0 {name=V2 value=3 savecurrent=false}
 C {devices/lab_pin.sym} 430 -1160 0 1 {name=p47 sig_type=std_logic lab=avss
 
 

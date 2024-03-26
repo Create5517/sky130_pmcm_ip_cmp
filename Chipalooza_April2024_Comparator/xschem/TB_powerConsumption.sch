@@ -5,7 +5,7 @@ K {}
 V {}
 S {}
 E {}
-T {Power Consumption} 345 -820 0 0 1 1 {}
+T {Power Consumption} 330 -795 0 0 1 1 {}
 N 1030 -410 1170 -410 {
 lab=vout}
 N 1150 -350 1290 -350 {
@@ -139,15 +139,16 @@ C {devices/vsource.sym} 530 -420 0 0 {name=VVdiff value="DC \{Vdiff\}" savecurre
 C {devices/lab_pin.sym} 530 -460 0 0 {name=p5 sig_type=std_logic lab=vinp}
 C {devices/lab_pin.sym} 530 -380 0 0 {name=p6 sig_type=std_logic lab=vinn}
 C {devices/code_shown.sym} -575 -380 0 0 {name=CONTROL only_toplevel=false value=".control 
+.option savecurrents
 
 .param vdvdd=1.8 vavdd=3.3 cout=1f
-.param ibias=2u ena=1 Vhyst_0=1 Vhyst_1=1
+.param ibias=0.5u ena=1.8 Vhyst_0=1 Vhyst_1=1
 .param vavss=0 vdvss=0
 .param Vvcm=0 Vdiff=0.2
 
 
-dc Vvcm 0 3.3 0.1
-plot -(I(Vavdd) + I(Vdvdd))
+dc Vvcm 0 0.1 0.01
+plot -(I(Vavdd) + I(Vdvdd)) + 500n
 
 write TB_powerConsumption.raw
 
@@ -158,4 +159,4 @@ write TB_powerConsumption.raw
 C {Chipalooza_April2024_Comparator.sym} 880 -410 0 0 {name=XDUT}
 C {devices/lab_pin.sym} 770 -220 0 0 {name=p10 sig_type=std_logic lab=hyst1}
 C {devices/vsource.sym} 770 -180 0 0 {name=Vhyst1 value="DC 0" savecurrent=false}
-C {sky130_fd_pr/corner.sym} -535 -735 0 0 {name=CORNER only_toplevel=true corner=ss}
+C {sky130_fd_pr/corner.sym} -535 -735 0 0 {name=CORNER only_toplevel=true corner=tt}
