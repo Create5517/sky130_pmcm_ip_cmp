@@ -136,8 +136,8 @@ C {devices/lab_pin.sym} 1975 -435 2 0 {name=p8 sig_type=std_logic lab=vout
 C {devices/vsource.sym} 795 -175 0 0 {name=Vavdd value="DC \{Vavdd\}" savecurrent=false}
 C {devices/vsource.sym} 725 -175 0 0 {name=Vdvdd value="DC \{Vdvdd\}" savecurrent=false}
 C {devices/vsource.sym} 1125 -225 0 0 {name=Vena value="DC 1.8" savecurrent=false}
-C {devices/vsource.sym} 1205 -175 0 0 {name=Vhyst0 value="pulse(0 1.8 160us 10us 10us 1000us 500us)" savecurrent=false}
-C {devices/vsource.sym} 1285 -205 0 0 {name=Vhyst1 value="pulse(0 1.8 360us 10us 10us 1000us 500us)" savecurrent=false}
+C {devices/vsource.sym} 1205 -175 0 0 {name=Vhyst0 value="pulse(0 1.8 160us 10us 10us 1000us 5000us)" savecurrent=false}
+C {devices/vsource.sym} 1285 -205 0 0 {name=Vhyst1 value="pulse(0 1.8 617us 10us 10us 1000us 500us)" savecurrent=false}
 C {devices/vsource.sym} 1365 -175 0 0 {name=Vavss value="DC \{Vavss\}" savecurrent=false}
 C {devices/vsource.sym} 1455 -175 0 0 {name=Vdvss value="DC \{Vdvss\}" savecurrent=false}
 C {devices/lab_pin.sym} 675 -135 0 0 {name=p1 sig_type=std_logic lab=VSUB}
@@ -161,12 +161,12 @@ value="* this option enables mos model bin
 .control
 
 .param vavdd=3.3 cout=0 vdvdd=1.8 vavss=0
-.param vdvss=0 ibias=0.5u
+.param vdvss=0 ibias=1u
 
 *dc VVcm 0 3.3 0.1
 *plot v(vout) v(inx)
 
-tran 0.25u 700u
+tran 0.1u 850u
 *plot v(vout) v(vinp)
 
 meas tran tr1 TRIG AT=0u TARG v(vout) VAL=1.75 RISE=1
@@ -187,13 +187,21 @@ meas tran vin_tr3 find v(vinp) at=tr3
 meas tran tf3 TRIG AT=0u TARG v(vout) VAL=0.05 FALL=3
 meas tran vin_tf3 find v(vinp) at=tf3
 
+meas tran tr4 TRIG AT=0u TARG v(vout) VAL=1.75 RISE=4
+meas tran vin_tr4 find v(vinp) at=tr4
+
+meas tran tf4 TRIG AT=0u TARG v(vout) VAL=0.05 FALL=4
+meas tran vin_tf4 find v(vinp) at=tf4
+
 let hyst1=(vin_tf1-vin_tr1)
 let hyst2=(vin_tf2-vin_tr2)
 let hyst3=(vin_tf3-vin_tr3)
+let hyst4=(vin_tf4-vin_tr4)
 
 print hyst1 
 print hyst2 
 print hyst3
+print hyst4
 
 meas tran vinx_tr find v(vinx) at=tr1
 let vio=(vinx_tr-vin_tr1)
@@ -212,7 +220,7 @@ echo $&hyst1 $&hyst2 $&hyst3 $&vio > \{simpath\}/\{filename\}_\{N\}.data
 C {devices/res.sym} 1005 -65 0 0 {name=RSUB1
 value=0.01
 device=resistor}
-C {devices/vsource.sym} 985 -190 0 0 {name=VVcm1 value="DC=3" savecurrent=false}
+C {devices/vsource.sym} 985 -190 0 0 {name=VVcm1 value="DC=1.65" savecurrent=false}
 C {devices/vsource.sym} 985 -390 0 0 {name=Vvinp value="pulse(-0.2 0.2 0.1us 50us 50us 10us 225us)" savecurrent=false}
 C {devices/lab_pin.sym} 985 -485 0 0 {name=p5 sig_type=std_logic lab=vinp
 }
@@ -224,4 +232,4 @@ C {devices/lab_pin.sym} 1355 -270 0 0 {name=p10 sig_type=std_logic lab=h1}
 C {devices/capa.sym} 1805 -405 0 0 {name=Cout
 value=\{Cout\}}
 C {devices/lab_pin.sym} 1845 -375 0 1 {name=p27 sig_type=std_logic lab=VSUB}
-C {sky130_fd_pr/corner.sym} 340 -870 0 0 {name=CORNER only_toplevel=true corner=tt}
+C {sky130_fd_pr/corner.sym} 340 -870 0 0 {name=CORNER only_toplevel=true corner=ss}
