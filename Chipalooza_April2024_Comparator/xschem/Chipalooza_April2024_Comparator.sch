@@ -1,4 +1,4 @@
-v {xschem version=3.4.4 file_version=1.2
+v {xschem version=3.4.5 file_version=1.2
 }
 G {}
 K {}
@@ -711,14 +711,12 @@ N 780 -990 780 -885 {
 lab=SourceBias3}
 N 780 -885 850 -885 {
 lab=SourceBias3}
-N 680 -1020 680 -995 {
-lab=Bias4}
 N 680 -1020 740 -1020 {
 lab=Bias4}
 N 985 -970 985 -945 {
-lab=Bias4}
+lab=Bias5}
 N 960 -970 985 -970 {
-lab=Bias4}
+lab=Bias5}
 N 850 -1155 1080 -1155 {
 lab=#net10}
 N 920 -1555 1190 -1555 {
@@ -768,23 +766,23 @@ lab=#net11}
 N 4690 -2935 4690 -2925 {
 lab=#net11}
 N 4625 -2865 4625 -2845 {
-lab=#net13}
+lab=Bias4}
 N 4560 -2895 4585 -2895 {
-lab=#net13}
+lab=Bias4}
 N 4560 -2895 4560 -2855 {
-lab=#net13}
+lab=Bias4}
 N 4560 -2855 4625 -2855 {
-lab=#net13}
+lab=Bias4}
 N 4490 -3115 4690 -3115 {
 lab=avdd}
 N 4765 -2105 4765 -2080 {
-lab=avss}
+lab=avssi}
 N 4725 -2135 4725 -2060 {
 lab=ibias}
 N 4765 -2195 4765 -2165 {
-lab=avss}
+lab=Bias4}
 N 4930 -2105 4930 -2080 {
-lab=avss}
+lab=avssi}
 N 4890 -2135 4890 -2060 {
 lab=ibias}
 N 4725 -2060 4890 -2060 {
@@ -793,14 +791,15 @@ N 4930 -2195 4930 -2165 {
 lab=SourceBias10}
 N 4510 -2060 4730 -2060 {
 lab=ibias}
-N 600 -1275 600 -1240 {
-lab=Bias4}
-N 565 -1275 600 -1275 {
-lab=Bias4}
-N 430 -1255 430 -1220 {
-lab=Bias5}
-N 395 -1255 430 -1255 {
-lab=Bias5}
+N 5110 -2110 5110 -2085 {
+lab=avssi}
+N 5070 -2140 5070 -2065 {
+lab=ibias}
+N 5110 -2200 5110 -2170 {
+lab=SourceBias10}
+N 4890 -2060 4905 -2060 {}
+N 4905 -2060 5070 -2060 {}
+N 5070 -2065 5070 -2060 {}
 C {devices/ipin.sym} 110 -710 0 0 {name=p48 lab=vinp
 }
 C {devices/ipin.sym} 110 -680 0 0 {name=p4 lab=vinn
@@ -1692,7 +1691,7 @@ C {devices/lab_pin.sym} 3500 -2770 0 1 {name=p72 sig_type=std_logic lab=avssi
 }
 C {sky130_fd_pr/pfet_g5v0d10v5.sym} 3355 -2900 0 0 {name=M53
 L=1
-W=10
+W=5
 nf=1
 mult=2
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -2070,11 +2069,7 @@ C {devices/lab_pin.sym} 920 -970 0 0 {name=p80 sig_type=std_logic lab=avss
 
 
 }
-C {devices/lab_pin.sym} 985 -945 0 1 {name=p83 lab=Bias4
-}
 C {devices/lab_pin.sym} 780 -885 0 0 {name=l77 lab=SourceBias3}
-C {devices/lab_pin.sym} 680 -995 2 1 {name=p81 lab=Bias4
-}
 C {sky130_fd_pr/pfet_g5v0d10v5.sym} 4710 -3045 0 1 {name=M57
 L=2
 W=20
@@ -2161,15 +2156,7 @@ C {devices/lab_pin.sym} 4750 -2895 0 0 {name=l76 lab=avdd
 }
 C {devices/lab_pin.sym} 4895 -2820 0 0 {name=l104 lab=SourceBias10
 }
-C {devices/lab_pin.sym} 4765 -2080 0 1 {name=p100 sig_type=std_logic lab=avss
-
-
-}
 C {devices/lab_pin.sym} 4765 -2135 0 1 {name=p101 sig_type=std_logic lab=avss
-
-
-}
-C {devices/lab_pin.sym} 4930 -2080 0 1 {name=p102 sig_type=std_logic lab=avss
 
 
 }
@@ -2208,21 +2195,42 @@ spiceprefix=X
 }
 C {devices/lab_pin.sym} 2015 -855 0 1 {name=l6 lab=Bias5
 }
-C {devices/lab_pin.sym} 4765 -2190 0 0 {name=p16 sig_type=std_logic lab=avss
+C {devices/lab_pin.sym} 4560 -2895 0 0 {name=l35 lab=Bias4
+}
+C {devices/lab_pin.sym} 4765 -2195 0 0 {name=l38 lab=Bias4
+}
+C {devices/lab_pin.sym} 685 -1020 0 0 {name=l47 lab=Bias4
+}
+C {devices/lab_pin.sym} 985 -970 2 0 {name=l52 lab=Bias5
+}
+C {devices/lab_pin.sym} 4765 -2080 0 1 {name=p16 sig_type=std_logic lab=avssi
 
 
 }
-C {devices/vsource.sym} 600 -1210 0 0 {name=V1 value=1.5 savecurrent=false}
-C {devices/lab_pin.sym} 600 -1180 0 1 {name=p18 sig_type=std_logic lab=avss
+C {devices/lab_pin.sym} 4930 -2080 0 1 {name=p18 sig_type=std_logic lab=avssi
 
 
 }
-C {devices/lab_pin.sym} 565 -1275 2 1 {name=p21 lab=Bias4
-}
-C {devices/vsource.sym} 430 -1190 0 0 {name=V2 value=3 savecurrent=false}
-C {devices/lab_pin.sym} 430 -1160 0 1 {name=p47 sig_type=std_logic lab=avss
+C {devices/lab_pin.sym} 5110 -2200 0 0 {name=l56 lab=SourceBias4}
+C {sky130_fd_pr/nfet_g5v0d10v5.sym} 5090 -2140 0 0 {name=M36
+L=1
+W=3
+nf=1
+mult=2
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=nfet_g5v0d10v5
+spiceprefix=X
+lab=SourceBias4}
+C {devices/lab_pin.sym} 5110 -2140 0 1 {name=p21 sig_type=std_logic lab=avss
 
 
 }
-C {devices/lab_pin.sym} 395 -1255 2 1 {name=p49 lab=Bias5
+C {devices/lab_pin.sym} 5110 -2085 0 1 {name=p47 sig_type=std_logic lab=avssi
+
+
 }
