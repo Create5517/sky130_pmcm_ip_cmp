@@ -2079,8 +2079,8 @@ C {devices/lab_pin.sym} 1895 -2580 0 0 {name=l15 lab=avdd
 }
 C {devices/lab_pin.sym} 2020 -2575 0 0 {name=l31 lab=avdd
 }
-C {devices/vsource.sym} 2750 -800 0 0 {name=V3 value=1 savecurrent=false}
-C {devices/vsource.sym} 2740 -670 0 0 {name=V4 value=1.8 savecurrent=false}
+C {devices/vsource.sym} 2750 -800 0 0 {name=V3 value=2 savecurrent=false}
+C {devices/vsource.sym} 2740 -670 0 0 {name=V4 value=1.2 savecurrent=false}
 C {devices/lab_pin.sym} 2740 -640 0 1 {name=l5 lab=avssi}
 C {devices/lab_pin.sym} 2750 -770 0 1 {name=l52 lab=avssi}
 C {devices/res.sym} 2000 -105 0 0 {name=RSUB1
