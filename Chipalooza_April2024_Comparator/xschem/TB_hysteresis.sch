@@ -1,4 +1,4 @@
-v {xschem version=3.4.4 file_version=1.2
+v {xschem version=3.4.5 file_version=1.2
 }
 G {}
 K {}
@@ -30,15 +30,15 @@ lab=ibias}
 N 1125 -335 1305 -335 {
 lab=ena}
 N 1335 -325 1335 -295 {
-lab=h0}
+lab=VSUB}
 N 1205 -295 1335 -295 {
-lab=h0}
+lab=VSUB}
 N 1205 -295 1205 -205 {
-lab=h0}
+lab=VSUB}
 N 1355 -325 1355 -245 {
-lab=h1}
+lab=VSUB}
 N 1285 -245 1355 -245 {
-lab=h1}
+lab=VSUB}
 N 1365 -215 1365 -205 {
 lab=avss}
 N 1365 -215 1385 -215 {
@@ -68,7 +68,7 @@ lab=ena}
 N 1125 -195 1125 -155 {
 lab=VSUB}
 N 1285 -245 1285 -235 {
-lab=h1}
+lab=VSUB}
 N 1285 -175 1285 -145 {
 lab=VSUB}
 N 1125 -145 1125 -135 {
@@ -129,6 +129,10 @@ N 1665 -375 1805 -375 {
 lab=VSUB}
 N 1805 -375 1845 -375 {
 lab=VSUB}
+N 1285 -235 1285 -175 {
+lab=VSUB}
+N 1205 -205 1205 -140 {
+lab=VSUB}
 C {devices/lab_pin.sym} 1975 -435 2 0 {name=p8 sig_type=std_logic lab=vout
 
 
@@ -136,8 +140,6 @@ C {devices/lab_pin.sym} 1975 -435 2 0 {name=p8 sig_type=std_logic lab=vout
 C {devices/vsource.sym} 795 -175 0 0 {name=Vavdd value="DC \{Vavdd\}" savecurrent=false}
 C {devices/vsource.sym} 725 -175 0 0 {name=Vdvdd value="DC \{Vdvdd\}" savecurrent=false}
 C {devices/vsource.sym} 1125 -225 0 0 {name=Vena value="DC 1.8" savecurrent=false}
-C {devices/vsource.sym} 1205 -175 0 0 {name=Vhyst0 value="pulse(0 1.8 160us 10us 10us 1000us 5000us)" savecurrent=false}
-C {devices/vsource.sym} 1285 -205 0 0 {name=Vhyst1 value="pulse(0 1.8 617us 10us 10us 1000us 500us)" savecurrent=false}
 C {devices/vsource.sym} 1365 -175 0 0 {name=Vavss value="DC \{Vavss\}" savecurrent=false}
 C {devices/vsource.sym} 1455 -175 0 0 {name=Vdvss value="DC \{Vdvss\}" savecurrent=false}
 C {devices/lab_pin.sym} 675 -135 0 0 {name=p1 sig_type=std_logic lab=VSUB}
@@ -156,7 +158,7 @@ value="* this option enables mos model bin
 *.option wnflag=1 
 .option savecurrents
 .option save all
-.option temperature=25
+.option temperature=80
 
 .control
 
@@ -220,16 +222,14 @@ echo $&hyst1 $&hyst2 $&hyst3 $&vio > \{simpath\}/\{filename\}_\{N\}.data
 C {devices/res.sym} 1005 -65 0 0 {name=RSUB1
 value=0.01
 device=resistor}
-C {devices/vsource.sym} 985 -190 0 0 {name=VVcm1 value="DC=1.65" savecurrent=false}
+C {devices/vsource.sym} 985 -190 0 0 {name=VVcm1 value="DC=3" savecurrent=false}
 C {devices/vsource.sym} 985 -390 0 0 {name=Vvinp value="pulse(-0.2 0.2 0.1us 50us 50us 10us 225us)" savecurrent=false}
 C {devices/lab_pin.sym} 985 -485 0 0 {name=p5 sig_type=std_logic lab=vinp
 }
 C {Chipalooza_April2024_Comparator.sym} 1395 -435 0 0 {name=x1}
 C {devices/lab_pin.sym} 985 -300 0 0 {name=p6 sig_type=std_logic lab=vinx
 }
-C {devices/lab_pin.sym} 1205 -295 0 0 {name=p9 sig_type=std_logic lab=h0}
-C {devices/lab_pin.sym} 1355 -270 0 0 {name=p10 sig_type=std_logic lab=h1}
 C {devices/capa.sym} 1805 -405 0 0 {name=Cout
 value=\{Cout\}}
 C {devices/lab_pin.sym} 1845 -375 0 1 {name=p27 sig_type=std_logic lab=VSUB}
-C {sky130_fd_pr/corner.sym} 340 -870 0 0 {name=CORNER only_toplevel=true corner=ss}
+C {sky130_fd_pr/corner.sym} 340 -870 0 0 {name=CORNER only_toplevel=true corner=ff}

@@ -1,4 +1,4 @@
-v {xschem version=3.4.4 file_version=1.2
+v {xschem version=3.4.5 file_version=1.2
 }
 G {}
 K {}
@@ -142,13 +142,12 @@ C {devices/code_shown.sym} -575 -380 0 0 {name=CONTROL only_toplevel=false value
 .option savecurrents
 
 .param vdvdd=1.8 vavdd=3.3 cout=1f
-.param ibias=0.5u ena=1.8 Vhyst_0=1 Vhyst_1=1
+.param ibias=1u ena=0 Vhyst_0=1 Vhyst_1=1
 .param vavss=0 vdvss=0
 .param Vvcm=0 Vdiff=0.2
-
-
+.option temp=25
 dc Vvcm 0 0.1 0.01
-plot -(I(Vavdd) + I(Vdvdd)) + 500n
+plot -(I(Vavdd) + I(Vdvdd)) + 1u
 
 write TB_powerConsumption.raw
 
@@ -159,4 +158,4 @@ write TB_powerConsumption.raw
 C {Chipalooza_April2024_Comparator.sym} 880 -410 0 0 {name=XDUT}
 C {devices/lab_pin.sym} 770 -220 0 0 {name=p10 sig_type=std_logic lab=hyst1}
 C {devices/vsource.sym} 770 -180 0 0 {name=Vhyst1 value="DC 0" savecurrent=false}
-C {sky130_fd_pr/corner.sym} -535 -735 0 0 {name=CORNER only_toplevel=true corner=tt}
+C {sky130_fd_pr/corner.sym} -535 -735 0 0 {name=CORNER only_toplevel=true corner=ss}
